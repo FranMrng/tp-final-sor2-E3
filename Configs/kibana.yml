@@ -1,7 +1,0 @@
-server.port: 5601
-server.host: "0.0.0.0"
-elasticsearch.hosts: ["https://elasticsearch:9200"]
-elasticsearch.username: "kibana_system"
-elasticsearch.password: "kibanasor2"
-elasticsearch.ssl.verificationMode: "none"
-xpack.encryptedSavedObjects.encryptionKey: "a1643d09495a9bee1101404cffe08635"
