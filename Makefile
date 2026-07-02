@@ -9,7 +9,7 @@ install:
 	sudo bash setup.sh
 
 up:
-	docker compose up -d
+	docker compose -f configs/docker-compose.yml up -d 
 
 down:
-	docker compose down
+	docker compose -f configs/docker-compose.yml down
