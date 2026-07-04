@@ -6,7 +6,7 @@ services:
     environment:
       - ELASTICSEARCH_HOSTS=https://elasticsearch:9200
       - ELASTICSEARCH_USERNAME=kibana_system
-      - ELASTICSEARCH_PASSWORD=kibanasor2
+      - ELASTICSEARCH_PASSWORD=kibana123
       - ELASTICSEARCH_SSL_VERIFICATIONMODE=none #para que kibana confie en el certificado autofirmado
     volumes:
       - ./kibana.yml:/usr/share/kibana/config/kibana.yml
@@ -20,7 +20,7 @@ services:
     environment:
       - discovery.type=single-node
       - ELASTIC_PASSWORD=labosor2
-      - "ES_JAVA_OPTS=-Xms7g -Xmx7g"
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
         
   logstash:
     image: logstash:8.12.0
