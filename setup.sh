@@ -32,6 +32,24 @@ usermod -aG docker $SUDO_USER
 apt install -y auditd
 systemctl enable --now auditd
 
+# Configuracion de reglas auditd
+
+AUDIT_RULES_FILE="/etc/audit/rules.d/audit.rules"
+
+touch $AUDIT_RULES_FILE
+
+cat <<EOF >> $AUDIT_RULES_FILE
+
+## Reglas personalizadas 
+-w /etc/passwd -p rwa -k passwd_changes
+-w /etc/sudoers -p rwa -k sudoers_changes
+-a always,exit -F arch=b64 -S execve -F uid=0 -k root_commands
+-w /etc/shadow -p rwa -k shadow_access
+EOF
+
+augenrules --load
+systemctl restart auditd
+
 wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo gpg --yes --dearmor -o /usr/share/keyrings/elastic-keyring.gpg
 echo "deb [signed-by=/usr/share/keyrings/elastic-keyring.gpg] https://artifacts.elastic.co/packages/8.x/apt stable main" | sudo tee /etc/apt/sources.list.d/elastic-8.x.list > /dev/null
 
