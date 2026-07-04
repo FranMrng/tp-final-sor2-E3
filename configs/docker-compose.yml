@@ -20,7 +20,7 @@ services:
     environment:
       - discovery.type=single-node
       - ELASTIC_PASSWORD=labosor2
-      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - "ES_JAVA_OPTS=-Xms4g -Xmx4g"
         
   logstash:
     image: logstash:8.12.0
