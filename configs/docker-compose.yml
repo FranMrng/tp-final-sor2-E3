@@ -5,9 +5,6 @@ services:
       - "5601:5601"
     environment:
       - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
-        # - ELASTICSEARCH_USERNAME=kibana_system
-        # - ELASTICSEARCH_PASSWORD=kibana123
-      - ELASTICSEARCH_SSL_VERIFICATIONMODE=none #para que kibana confie en el certificado autofirmado
     volumes:
       - ./kibana.yml:/usr/share/kibana/config/kibana.yml
     depends_on:
@@ -25,19 +22,6 @@ services:
       - xpack.security.http.ssl.enabled=false
       - "ES_JAVA_OPTS=-Xms4g -Xmx4g"
 
-  setup:
-    image: elasticsearch:8.12.0
-    depends_on:
-      - elasticsearch
-    command: >
-      bash -c '
-        until curl -s -k -u elastic:labosor2 http://elasticsearch:9200 > /dev/null; do
-          sleep 5
-        done
-        echo "Elasticsearch listo. Configurando usuario kibana_system..."
-        echo "kibana123" | bin/elasticsearch-reset-password -u kibana_system -s --batch
-        '
-        
   logstash:
     image: logstash:8.12.0
     ports:
