@@ -15,7 +15,7 @@ Tal como lo exige la rúbrica, este repositorio está organizado en los siguient
 Para desplegar este laboratorio se requiere:
 * Sistema Operativo Linux (ej. Ubuntu Server 24.04).
 * Docker y Docker Compose instalados.
-* Mínimo 15 GB de memoria RAM disponibles (La máquina virtual de Java - JVM de Elasticsearch está configurada para consumir 7GB de Heap para evitar caídas).
+* Mínimo 8 GB de memoria RAM disponibles (La máquina virtual de Java - JVM de Elasticsearch está configurada para consumir 4GB de Heap para evitar caídas).
 
 ## Instrucciones de Instalación y Ejecución
 
